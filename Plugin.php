@@ -100,6 +100,7 @@ class Plugin extends PluginBase
 		// Add 'Social Providers' field to edit users form
 		Event::listen('backend.form.extendFields', function($widget) {
 			if (!$widget->getController() instanceof \RainLab\User\Controllers\Users) return;
+                        if (!$widget->model instanceof \RainLab\User\Models\User) return;
 			if ($widget->getContext() != 'update') return;
 
 			$widget->addFields([
